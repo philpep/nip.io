@@ -1,0 +1,16 @@
+version: '2'
+services:
+  nip:
+    build:
+      context: .
+    restart: always
+    volumes:
+      - ./backend.conf:/usr/local/bin/backend.conf:z
+    ports:
+      - "${PORT}:53"
+      - "${PORT}:53/udp"
+    networks:
+      - nip
+networks:
+  nip:
+    external: false
